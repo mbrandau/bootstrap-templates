@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+  <link rel="stylesheet" href="maintenance.min.css">
+  <title>Maintenance</title>
+</head>
+
+<body>
+  <div class="maintenance-container">
+    <h1 class="text-center mb-4">Maintenance</h1>
+    <p>Sorry, we're currently offline due to a quick maintenance.</p>
+    <div id="back-in">
+      <p>We'll be back in approximately <b id="back-in-time">?</b>.</p>
+    </div>
+    <div class="social-media">
+      <a href="#">Twitter</a>
+      <a href="#">Facebook</a>
+      <a href="#">GitHub</a>
+    </div>
+  </div>
+  <div class="footer text-center my-4">
+    &copy; Maximilian Brandau
+  </div>
+
+  <script>
+    const b = document.getElementById('back-in-time'),
+      end = new Date(Date.now() + 5000);
+
+    function update() {
+      const sec_num = Math.round((end.getTime() - Date.now()) / 1000);
+      if (sec_num < 0) {
+        document.getElementById('back-in').innerHTML = '<p><b>We should be back online by now!</b></p><p><button role="button" class="btn btn-block btn-success" onclick="location.reload()">Reload</button></p>';
+        window.clearInterval(interval);
+        return;
+      } else {
+        const hours = Math.floor(sec_num / 3600),
+          minutes = Math.floor((sec_num - (hours * 3600)) / 60),
+          seconds = Math.round(sec_num - (hours * 3600) - (minutes * 60));
+
+        if (hours > 0) b.innerHTML = hours + ' hour' + (hours == 1 ? '' : 's') + ' and ' + minutes + ' minute' + (minutes == 1 ? '' : 's');
+        else b.innerHTML = minutes + ' minute' + (minutes == 1 ? '' : 's') + ' and ' + seconds + ' second' + (seconds == 1 ? '' : 's');
+        setTimeout(update, 1000);
+      }
+    }
+    update();
+  </script>
+  <div class="fixed-bottom m-2 text-right">
+    <div class="btn-group btn-group-sm" role="group">
+      <a class="btn btn-sm btn-secondary" href="../index.html">Home</a>
+      <a class="btn btn-sm btn-secondary" href="https://github.com/mbrandau/bootstrap-templates/blob/master/templates/maintenance.html">Code</a>
+    </div>
+  </div>
+</body>
+
+</html>

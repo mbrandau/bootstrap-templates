@@ -1,0 +1,73 @@
+body,
+html {
+  background: #f7f7f7;
+}
+
+.sign-in-container {
+  margin: 0 auto;
+
+  h1 {
+    font-weight: 200;
+  }
+
+  form {
+    width: 300px;
+    margin: 32px auto;
+    padding: 24px;
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+
+    label {
+      font-weight: 600;
+      font-size: 14px;
+    }
+
+    .pw-container a {
+      font-size: 12px;
+    }
+
+    button {
+      font-weight: bold;
+    }
+
+    .no-account {
+      display: block;
+      font-size: 14px;
+    }
+  }
+  @media screen and (max-width: 420px) {
+    border-bottom: 1px solid #eee;
+    margin: 0;
+    width: 100%;
+    background: #fff;
+
+    form {
+      width: 100%;
+      margin: 0;
+      background: transparent;
+      border: none;
+    }
+  }
+  @media screen and (min-height: 720px) and (min-width: 420px) {
+    margin-top: 64px;
+  }
+}
+
+.footer {
+  margin: 32px auto;
+  font-size: 12px;
+
+  a {
+    color: #aaa;
+    margin-right: 8px;
+
+    &:hover {
+      color: #888;
+    }
+
+    &:last-child {
+      margin-right: 0;
+    }
+  }
+}
